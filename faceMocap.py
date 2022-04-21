@@ -1,4 +1,5 @@
 #currnet issue
+import socket
 import maya.cmds as rd
 import traceback
 import maya.mel as mel
