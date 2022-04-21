@@ -1,5 +1,6 @@
 #currnet issue
 import socket
+import pymel.core as py
 import maya.cmds as rd
 import traceback
 import maya.mel as mel
