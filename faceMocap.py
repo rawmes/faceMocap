@@ -1,6 +1,5 @@
 #currnet issue
 import socket
-import pymel.core as py
 import maya.cmds as rd
 import traceback
 import maya.mel as mel
@@ -47,7 +46,7 @@ class TCPConnection:
     #######################################################        
     def deleteLoc(self,*arg):
         try:
-            cmds.delete('*mocapLocator*')
+            rd.delete('*mocapLocator_*')
         except:
             print('nothing was deleted')
     ####################################################
@@ -62,12 +61,14 @@ class TCPConnection:
     
     def animateLoc(self,*arg):
         frame = 0
-        while frame < 500:
+        endFrame = 500
+        step = 1
+        while frame < endFrame:
             self.readlines()
             erenYeager = self.splitData
             #print(erenYeager)
             length = len(erenYeager)
-            print(length)
+            print(frame)
             for i in range (length):
                 axisStr = str(erenYeager[i]).split("_")
                 if(len(axisStr)>2):
@@ -79,7 +80,7 @@ class TCPConnection:
                     rd.setKeyframe( namer, t=frame, at='ty', v=yValue  )
                     rd.setKeyframe( namer, t=frame, at='tz', v=zValue  )
 
-            frame = frame +5
+            frame = frame +step
             for i in range(4):
                 self.readlines()
     '''
