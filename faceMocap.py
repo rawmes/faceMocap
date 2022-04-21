@@ -61,8 +61,8 @@ class TCPConnection:
     
     def animateLoc(self,*arg):
         frame = 0
-        endFrame = 500
-        step = 1
+        endFrame = 2000
+        step = 5
         while frame < endFrame:
             self.readlines()
             erenYeager = self.splitData
